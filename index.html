@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SEDEGES - Prototipo Sistema Integrado de Personal</title>
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+  <link href="assets/css/gentelella-custom.min.css" rel="stylesheet">
+  <link href="assets/css/app.css" rel="stylesheet">
+</head>
+<body class="nav-md">
+<div class="container body">
+  <div class="main_container">
+    <div class="col-md-3 left_col menu_fixed">
+      <div class="left_col scroll-view">
+        <div class="navbar nav_title" style="border:0">
+          <a href="#" class="site_title nav-link" data-target="dashboard">
+            <span class="site-title-mark">SG</span>
+            <span class="site-title-text">Sistema Integrado<br>de Administración de Personal</span>
+          </a>
+        </div>
+        <div class="clearfix"></div>
+        <div class="profile clearfix">
+          <div class="profile_pic"><div class="avatar">AD</div></div>
+          <div class="profile_info"><span>Sesión demostrativa</span><h2>Administrador</h2></div>
+        </div>
+        <br>
+        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+          <div class="menu_section">
+            <h3>SEDEGES</h3>
+            <ul class="nav side-menu">
+              <li class="active"><a class="nav-link" data-target="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+
+              <li><a><i class="fa fa-cogs"></i> Administración y Seguridad <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a class="nav-link" data-target="administracion" data-anchor="usuarios">Usuarios y roles</a></li>
+                  <li><a class="nav-link" data-target="administracion" data-anchor="permisos">Permisos</a></li>
+                  <li><a class="nav-link" data-target="administracion" data-anchor="estructura">Estructura organizacional</a></li>
+                  <li><a class="nav-link" data-target="administracion" data-anchor="items">Ítems y puestos</a></li>
+                  <li><a class="nav-link" data-target="administracion" data-anchor="configuracion">Configuración</a></li>
+                </ul>
+              </li>
+
+              <li><a><i class="fa fa-folder-open"></i> Kardex de Personal <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a class="nav-link" data-target="nomina">Nómina de Personal</a></li>
+                  <li><a class="nav-link" data-target="expediente">Expediente del Servidor</a></li>
+                  <li><a class="nav-link" data-target="expediente" data-person-tab="laboral">Vínculo laboral</a></li>
+                  <li><a class="nav-link" data-target="expediente" data-person-tab="social">Seguridad Social / CNS</a></li>
+                  <li><a class="nav-link" data-target="expediente" data-person-tab="servicios">Vacaciones y servicios</a></li>
+                  <li><a class="nav-link" data-target="comisiones">Historial de Comisiones</a></li>
+                </ul>
+              </li>
+
+              <li><a><i class="fa fa-file-text-o"></i> Recursos Humanos <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a class="nav-link" data-target="rrhh" data-anchor="memorandums">Memorándums</a></li>
+                  <li><a class="nav-link" data-target="rrhh" data-anchor="poai">POAI por gestión</a></li>
+                </ul>
+              </li>
+
+              <li><a><i class="fa fa-clock-o"></i> Control de Personal <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a class="nav-link" data-target="control" data-anchor="marcaciones">Marcaciones</a></li>
+                  <li><a class="nav-link" data-target="control" data-anchor="boletas">Boletas y permisos</a></li>
+                  <li><a class="nav-link" data-target="control" data-anchor="disciplinarias">Planillas disciplinarias</a></li>
+                </ul>
+              </li>
+
+              <li><a><i class="fa fa-calculator"></i> Planillas y Remuneraciones <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a class="nav-link" data-target="planillas">Planilla salarial</a></li>
+                  <li><a class="nav-link" data-target="planillas" data-anchor="procesos-planillas">Subsidios y aguinaldos</a></li>
+                  <li><a class="nav-link" data-target="planillas" data-anchor="procesos-planillas">Boletas de pago</a></li>
+                  <li><a class="nav-link" data-target="planillas" data-anchor="procesos-planillas">Reportes CNS</a></li>
+                </ul>
+              </li>
+
+              <li><a class="nav-link" data-target="servidor"><i class="fa fa-user"></i> Portal del Servidor Público</a></li>
+              <li><a class="nav-link" data-target="reportes"><i class="fa fa-bar-chart"></i> Reportes y Auditoría</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="sidebar-footer hidden-small">
+          <a data-toggle="tooltip" title="Configuración"><span class="glyphicon glyphicon-cog"></span></a>
+          <a data-toggle="tooltip" title="Pantalla completa"><span class="glyphicon glyphicon-fullscreen"></span></a>
+          <a data-toggle="tooltip" title="Ayuda"><span class="glyphicon glyphicon-question-sign"></span></a>
+          <a data-toggle="tooltip" title="Salir"><span class="glyphicon glyphicon-off"></span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="top_nav">
+      <div class="nav_menu">
+        <nav>
+          <div class="nav toggle"><a id="menu_toggle"><i class="fa fa-bars"></i></a></div>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="top-demo-tools">
+              <div class="top-tool"><i class="fa fa-user-secret"></i><select id="demoRole" class="form-control input-sm" onchange="changeDemoRole(this.value)"><option>Administrador</option><option>Kardex</option><option>Recursos Humanos</option><option>Control de Personal</option><option>Planillas</option><option>Jefe / Responsable</option><option>Servidor Público</option></select></div>
+              <button class="btn btn-default btn-sm top-btn" onclick="openNotifications()"><i class="fa fa-bell"></i> <span class="badge" id="notificationCount">4</span></button>
+              <button class="btn btn-default btn-sm top-btn" onclick="resetDemoData()" title="Volver a los datos iniciales"><i class="fa fa-refresh"></i></button>
+            </li>
+            <li style="padding:8px 14px 0 0">
+              <div class="brand-box">
+                <img class="official-logo" src="assets/img/sedeges_wordmark.svg" alt="SEDEGES La Paz">
+                <div class="logo-fallback" id="logoFallback">SEDEGES<br>LA PAZ</div>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="right_col" role="main">
+      <div class="demo-ribbon no-print"><b>Entorno de demostración.</b> Datos personales, C.I., ítems y montos son ficticios. Los flujos y botones son navegables para demostrar el funcionamiento propuesto.</div>
+
+      <!-- DASHBOARD -->
+      <section id="page-dashboard" class="section-page active">
+        <div class="page-title"><div class="title_left"><h3>Dashboard <small>Resumen operativo de Recursos Humanos</small></h3></div></div><div class="clearfix"></div>
+        <div class="row">
+          <div class="col-md-3 col-sm-6"><div class="kpi"><div class="labelx">Servidores activos</div><div class="num">186</div><div class="hint">Ítem y otras modalidades registradas</div></div></div>
+          <div class="col-md-3 col-sm-6"><div class="kpi" style="border-left-color:#2f7d61"><div class="labelx">Ítems ocupados</div><div class="num">162</div><div class="hint">24 ítems disponibles / acéfalos</div></div></div>
+          <div class="col-md-3 col-sm-6"><div class="kpi" style="border-left-color:#337ab7"><div class="labelx">Solicitudes pendientes</div><div class="num" id="kpiPending">9</div><div class="hint">Vacaciones, boletas y actualizaciones</div></div></div>
+          <div class="col-md-3 col-sm-6"><div class="kpi" style="border-left-color:#b7791f"><div class="labelx">Actualización anual</div><div class="num">78%</div><div class="hint">Ficha personal gestión 2026</div></div></div>
+        </div>
+        <div class="row" style="margin-top:15px">
+          <div class="col-md-7"><div class="x_panel"><div class="x_title"><h2>Personal por área / unidad</h2><div class="clearfix"></div></div><div class="x_content"><div class="chart-wrap"><canvas id="chartUnits"></canvas></div></div></div></div>
+          <div class="col-md-5"><div class="x_panel"><div class="x_title"><h2>Novedades de asistencia - septiembre</h2><div class="clearfix"></div></div><div class="x_content"><div class="chart-wrap"><canvas id="chartAttendance"></canvas></div></div></div></div>
+        </div>
+        <div class="row">
+          <div class="col-md-7"><div class="x_panel"><div class="x_title"><h2>Procesos que requieren atención</h2><div class="clearfix"></div></div><div class="x_content"><table class="table table-hover"><thead><tr><th>Proceso</th><th>Funcionario</th><th>Responsable actual</th><th>Fecha</th><th></th></tr></thead><tbody id="dashboardTasks"></tbody></table></div></div></div>
+          <div class="col-md-5"><div class="x_panel"><div class="x_title"><h2>Accesos rápidos</h2><div class="clearfix"></div></div><div class="x_content"><div class="action-grid">
+            <div class="action-card nav-link" data-target="nomina"><i class="fa fa-search"></i><b>Buscar servidor</b><span>Nómina y ficha resumen</span></div>
+            <div class="action-card nav-link" data-target="rrhh"><i class="fa fa-file-text"></i><b>Memorándum</b><span>Generar y registrar efecto</span></div>
+            <div class="action-card nav-link" data-target="control"><i class="fa fa-clock-o"></i><b>Asistencia</b><span>Marcaciones y boletas</span></div>
+            <div class="action-card nav-link" data-target="reportes"><i class="fa fa-download"></i><b>Reportes</b><span>Excel y documentos</span></div><div class="action-card" onclick="openPresentationGuide()"><i class="fa fa-play-circle"></i><b>Recorrido demo</b><span>Guía rápida para presentación</span></div>
+          </div></div></div></div>
+        </div>
+      </section>
+
+      <!-- ADMINISTRACION -->
+      <section id="page-administracion" class="section-page">
+        <div class="page-title"><div class="title_left"><h3>Administración y Seguridad <small>Datos maestros, accesos y estructura institucional</small></h3></div></div><div class="clearfix"></div>
+        <div class="row">
+          <div class="col-md-7"><div class="x_panel" id="usuarios"><div class="x_title"><h2>Usuarios, roles y permisos</h2><ul class="nav navbar-right panel_toolbox"><li><button class="btn btn-xs btn-brand" onclick="openUserForm()"><i class="fa fa-plus"></i> Nuevo usuario</button></li></ul><div class="clearfix"></div></div><div class="x_content"><div class="toolbar" style="margin-bottom:10px"><div class="search-box" style="min-width:250px;flex:1"><i class="fa fa-search"></i><input id="userSearch" class="form-control" placeholder="Buscar usuario, área o rol" oninput="renderUsers()"></div><span class="mini-note">Los usuarios se inhabilitan sin borrar su historial.</span></div><table class="table table-hover"><thead><tr><th>Usuario</th><th>Área</th><th>Rol</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="usersTable"></tbody></table></div></div></div>
+          <div class="col-md-5"><div class="x_panel"><div class="x_title"><h2>Estructura organizacional</h2><div class="clearfix"></div></div><div class="x_content org-tree">
+            <ul><li><span class="node"><strong>Dirección Técnica</strong></span><ul>
+              <li><span class="node">Unidad Administrativa Financiera</span><ul><li><span class="node">Área de Recursos Humanos</span><ul><li><span class="node">Sección Kardex</span></li><li><span class="node">Sección Control de Personal</span></li><li><span class="node">Sección Planillas</span></li><li><span class="node">Sección Capacitación</span></li></ul></li><li><span class="node">Área de Tecnologías de Información</span></li><li><span class="node">Área de Contabilidad</span></li></ul></li>
+              <li><span class="node">Unidad de Salud</span></li><li><span class="node">Unidad de Administración de Centros</span></li><li><span class="node">Unidad de Planificación</span></li>
+            </ul></li></ul>
+            <p class="mini-note">La estructura se registra jerárquicamente y se reutiliza para ítems, responsables, autorizaciones, ubicaciones y reportes.</p>
+          </div></div></div>
+        </div>
+
+        <div class="x_panel" id="permisos"><div class="x_title"><h2>Matriz rápida de permisos por rol</h2><div class="clearfix"></div></div><div class="x_content"><div class="table-responsive"><table class="table table-condensed permission-matrix"><thead><tr><th>Rol</th><th>Nómina</th><th>Expediente</th><th>Memorándums</th><th>Control</th><th>Planillas</th><th>Auditoría</th></tr></thead><tbody><tr><td><b>Administrador</b></td><td>CRUD</td><td>CRUD</td><td>CRUD</td><td>CRUD</td><td>CRUD</td><td>Ver</td></tr><tr><td><b>Kardex</b></td><td>Ver/Editar</td><td>CRUD</td><td>Ver</td><td>Consulta</td><td>-</td><td>Ver propio</td></tr><tr><td><b>RR.HH.</b></td><td>Ver</td><td>Consulta</td><td>CRUD</td><td>Consulta</td><td>-</td><td>Ver propio</td></tr><tr><td><b>Control</b></td><td>Ver</td><td>Consulta</td><td>Ver</td><td>CRUD</td><td>Novedades</td><td>Ver propio</td></tr><tr><td><b>Planillas</b></td><td>Ver</td><td>Consulta</td><td>-</td><td>Consulta</td><td>CRUD</td><td>Ver propio</td></tr></tbody></table></div></div></div>
+        <div class="x_panel"><div class="x_title"><h2>Ítems, puestos y perfil POAI 2026</h2><div class="clearfix"></div></div><div class="x_content">
+          <div class="toolbar" style="margin-bottom:10px"><div class="search-box" style="min-width:280px;flex:1"><i class="fa fa-search"></i><input id="itemSearch" class="form-control" placeholder="Buscar ítem, puesto o dependencia"></div><button class="btn btn-brand" onclick="openItemForm()"><i class="fa fa-plus"></i> Nuevo ítem</button><button class="btn btn-default" onclick="openToast('Configuración de feriados y listas internas')"><i class="fa fa-cog"></i> Configuración</button></div>
+          <table class="table table-hover"><thead><tr><th>Ítem</th><th>Unidad / Dependencia</th><th>Denominación</th><th>Puesto funcional</th><th>Situación</th><th>Registro</th><th>Acciones</th></tr></thead><tbody id="itemsTable"></tbody></table>
+        </div></div>
+      </section>
+      <!-- NOMINA DE PERSONAL -->
+      <section id="page-nomina" class="section-page">
+        <div class="page-title"><div class="title_left"><h3>Nómina de Personal <small>Consulta y administración de servidores públicos</small></h3></div></div><div class="clearfix"></div>
+        <div class="row">
+          <div class="col-md-9">
+            <div class="x_panel"><div class="x_title"><h2>Servidores registrados</h2><ul class="nav navbar-right panel_toolbox"><li><button class="btn btn-xs btn-brand" onclick="openPersonForm()"><i class="fa fa-plus"></i> Nuevo registro</button></li><li><button class="btn btn-xs btn-default" onclick="exportPeopleCSV()"><i class="fa fa-file-excel-o"></i> Exportar</button></li></ul><div class="clearfix"></div></div><div class="x_content">
+              <div class="toolbar nomina-toolbar"><div class="search-box" style="min-width:310px;flex:1"><i class="fa fa-search"></i><input id="personSearch" class="form-control" placeholder="Buscar por nombre, C.I., ítem, cargo o centro"></div><select id="statusFilter" class="form-control" style="width:140px" onchange="renderPeople()"><option value="">Todos</option><option value="ACTIVO">Activos</option><option value="INACTIVO">Inactivos</option></select><select id="immobilityFilter" class="form-control" style="width:160px" onchange="renderPeople()"><option value="">Inamovilidad: todas</option><option value="SI">Con inamovilidad</option><option value="NO">Sin inamovilidad</option></select><select id="depFilter" class="form-control" style="width:220px" onchange="renderPeople()"><option value="">Todas las dependencias</option></select></div>
+              <div class="table-responsive"><table class="table table-hover nomina-table"><thead><tr><th>C.I.</th><th>Nombre completo</th><th>Ítem</th><th>Cargo</th><th>Asignación</th><th>Estado</th><th style="width:150px">Acciones</th></tr></thead><tbody id="peopleTable"></tbody></table></div>
+              <div class="mini-note"><span id="peopleCount"></span> · El botón <i class="fa fa-eye"></i> abre una ficha resumen. Desde allí puede consultarse el expediente completo.</div>
+            </div></div>
+          </div>
+          <div class="col-md-3">
+            <div id="quickPersonCard" class="x_panel quick-person-card"><div class="x_title"><h2>Ficha Resumen</h2><div class="clearfix"></div></div><div class="x_content"><div class="empty-state"><i class="fa fa-user-o"></i><p>Seleccione <b>Ver</b> en la nómina para consultar el resumen del servidor.</p></div></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPEDIENTE -->
+      <section id="page-expediente" class="section-page">
+        <div class="page-title"><div class="title_left"><h3>Expediente del Servidor <small>Ficha integral y trayectoria institucional</small></h3></div><div class="title_right"><div class="pull-right" style="min-width:320px"><select id="expedientePersonSelect" class="form-control" onchange="showPerson(this.value, false)"></select></div></div></div><div class="clearfix"></div>
+        <div id="personDetail" class="x_panel"><div class="x_content"><div class="empty-state"><i class="fa fa-folder-open-o"></i><p>Seleccione un servidor para visualizar su expediente.</p></div></div></div>
+      </section>
+
+      <!-- HISTORIAL DE COMISIONES -->
+      <section id="page-comisiones" class="section-page">
+        <div class="page-title"><div class="title_left"><h3>Historial de Comisiones <small>Consulta exclusiva de comisiones realizadas por servidor</small></h3></div></div><div class="clearfix"></div>
+        <div class="x_panel"><div class="x_title"><h2>Comisiones registradas</h2><ul class="nav navbar-right panel_toolbox"><li><button class="btn btn-xs btn-default" onclick="exportCommissionCSV()"><i class="fa fa-file-excel-o"></i> Exportar</button></li><li><button class="btn btn-xs btn-brand" onclick="showPage('rrhh'); setTimeout(function(){ $('#memoType').val('Comisión').trigger('change'); $('#memoModal').modal('show');},150)"><i class="fa fa-plus"></i> Nueva comisión</button></li></ul><div class="clearfix"></div></div><div class="x_content">
+          <div class="toolbar" style="margin-bottom:12px"><div class="search-box" style="min-width:320px;flex:1"><i class="fa fa-search"></i><input id="commissionSearch" class="form-control" placeholder="Buscar servidor, destino o memorándum" oninput="renderCommissionHistory()"></div><select id="commissionPerson" class="form-control" style="width:280px" onchange="renderCommissionHistory()"><option value="">Todos los servidores</option></select></div>
+          <table class="table table-hover"><thead><tr><th>Servidor</th><th>Memorándum</th><th>Destino</th><th>Inicio</th><th>Fin</th><th>Observación</th></tr></thead><tbody id="commissionHistoryTable"></tbody></table>
+        </div></div>
+      </section>
+
+      <!-- RRHH -->
+      <section id="page-rrhh" class="section-page">
+        <div class="page-title"><div class="title_left"><h3>Recursos Humanos <small>Memorándums, ítems y POAI por gestión</small></h3></div></div><div class="clearfix"></div>
+        <div class="row">
+          <div class="col-md-8"><div class="x_panel" id="memorandums"><div class="x_title"><h2>Gestión de Memorándums</h2><ul class="nav navbar-right panel_toolbox"><li><button class="btn btn-xs btn-brand" data-toggle="modal" data-target="#memoModal"><i class="fa fa-plus"></i> Nuevo memorándum</button></li></ul><div class="clearfix"></div></div><div class="x_content"><table class="table table-hover"><thead><tr><th>Nº</th><th>Tipo</th><th>Servidor</th><th>Efecto</th><th>Fecha</th><th></th></tr></thead><tbody id="memoTable"></tbody></table></div></div></div>
+          <div class="col-md-4"><div class="x_panel"><div class="x_title"><h2>Principio de automatización</h2><div class="clearfix"></div></div><div class="x_content"><p style="font-size:12px">El memorándum no es solo un documento. Al emitirse puede actualizar el historial, la asignación, el ítem o la ubicación temporal del servidor.</p><div class="workflow"><span class="step done">Memorándum</span><span class="arrow">→</span><span class="step done">Historial</span><span class="arrow">→</span><span class="step done">Control Personal</span></div><hr><button class="btn btn-default btn-sm" onclick="showItem(152)"><i class="fa fa-briefcase"></i> Ver ejemplo Ítem / POAI</button></div></div></div>
+        </div>
+        <div class="x_panel" id="poai"><div class="x_title"><h2>POAI por gestión</h2><div class="clearfix"></div></div><div class="x_content"><table class="table"><thead><tr><th>Ítem</th><th>Puesto</th><th>Gestión</th><th>Versión</th><th>Última actualización</th><th></th></tr></thead><tbody>
+          <tr><td>152</td><td>Psicólogo I</td><td>2026</td><td>Vigente</td><td>15/01/2026</td><td><button class="btn btn-xs btn-default" onclick="showItem(152)">Ver perfil</button></td></tr>
+          <tr><td>285</td><td>Trabajador Social</td><td>2026</td><td>Vigente</td><td>15/01/2026</td><td><button class="btn btn-xs btn-default" onclick="showItem(285)">Ver perfil</button></td></tr>
+          <tr><td>311</td><td>Auxiliar de Enfermería</td><td>2026</td><td>Vigente</td><td>18/01/2026</td><td><button class="btn btn-xs btn-default" onclick="showItem(311)">Ver perfil</button></td></tr>
+        </tbody></table><p class="mini-note">Ejemplos POAI ficticios para demostrar la funcionalidad; deben ajustarse al archivo institucional PERFILES POAI 2026.xlsx.</p></div></div>
+      </section>
+
+      <!-- CONTROL PERSONAL -->
+      <section id="page-control" class="section-page">
+        <div class="page-title"><div class="title_left"><h3>Control de Personal <small>Asistencia, marcaciones, boletas y novedades</small></h3></div></div><div class="clearfix"></div>
+        <div class="row">
+          <div class="col-md-7"><div class="x_panel" id="marcaciones"><div class="x_title"><h2>Marcaciones recientes</h2><div class="clearfix"></div></div><div class="x_content"><table class="table table-hover"><thead><tr><th>Servidor</th><th>Fecha</th><th>Entrada</th><th>Salida</th><th>Origen</th><th>Novedad</th></tr></thead><tbody id="markTable"></tbody></table></div></div></div>
+          <div class="col-md-5"><div class="x_panel"><div class="x_title"><h2>Resumen del día</h2><div class="clearfix"></div></div><div class="x_content"><div class="summary-strip" style="grid-template-columns:repeat(2,1fr)"><div class="summary-card"><div class="k">Marcaciones</div><div class="v">173</div></div><div class="summary-card"><div class="k">Comisiones</div><div class="v">8</div></div><div class="summary-card"><div class="k">Vacaciones</div><div class="v">5</div></div><div class="summary-card"><div class="k">Novedades</div><div class="v">11</div></div></div></div></div></div>
+        </div>
+        <div class="x_panel" id="boletas"><div class="x_title"><h2>Boletas de salida / comisión</h2><ul class="nav navbar-right panel_toolbox"><li><button class="btn btn-xs btn-brand" data-toggle="modal" data-target="#boletaModal"><i class="fa fa-plus"></i> Nueva boleta</button></li></ul><div class="clearfix"></div></div><div class="x_content"><table class="table table-hover"><thead><tr><th>Nº</th><th>Servidor</th><th>Destino</th><th>Horario</th><th>Flujo</th><th></th></tr></thead><tbody id="boletaTable"></tbody></table></div></div>
+        <div class="x_panel" id="disciplinarias"><div class="x_title"><h2>Planillas disciplinarias y novedades para Planillas</h2><div class="clearfix"></div></div><div class="x_content"><p class="mini-note">Control de Personal registra la novedad una sola vez. Si genera efecto económico, Planillas la recibe automáticamente.</p><table class="table"><thead><tr><th>Servidor</th><th>Concepto</th><th>Periodo</th><th>Horas / días</th><th>Efecto planilla</th></tr></thead><tbody><tr><td>Diego Choque Lima</td><td>Atraso acumulado</td><td>Sep/2026</td><td>2 h 15 min</td><td><span class="status-pill s-info">Enviado</span></td></tr><tr><td>Ana Paredes Quispe</td><td>Inasistencia injustificada</td><td>Sep/2026</td><td>1 día</td><td><span class="status-pill s-info">Enviado</span></td></tr></tbody></table></div></div>
+      </section>
+
+      <!-- PLANILLAS -->
+      <section id="page-planillas" class="section-page">
+        <div class="page-title"><div class="title_left"><h3>Planillas y Remuneraciones <small>Procesamiento económico con novedades ya validadas</small></h3></div></div><div class="clearfix"></div>
+        <div class="x_panel"><div class="x_title"><h2>Planilla preliminar - Septiembre 2026</h2><ul class="nav navbar-right panel_toolbox"><li><a href="documentos_demo/reporte_general_demo.xlsx" class="btn btn-xs btn-default"><i class="fa fa-file-excel-o"></i> Excel demo</a></li></ul><div class="clearfix"></div></div><div class="x_content"><table class="table table-hover"><thead><tr><th>Servidor</th><th>Ítem</th><th>Haber básico</th><th>Subsidios</th><th>Descuentos</th><th>Sanciones</th><th>Líquido</th><th></th></tr></thead><tbody id="payrollTable"></tbody></table></div></div>
+        <div class="row" id="procesos-planillas"><div class="col-md-6"><div class="x_panel"><div class="x_title"><h2>Procesos de Planillas</h2><div class="clearfix"></div></div><div class="x_content"><div class="action-grid" style="grid-template-columns:repeat(2,1fr)"><div class="action-card"><i class="fa fa-money"></i><b>Remuneraciones</b><span>Planilla preliminar y consolidada</span></div><div class="action-card"><i class="fa fa-child"></i><b>Subsidios</b><span>Prenatal, natalidad y otros</span></div><div class="action-card"><i class="fa fa-gift"></i><b>Aguinaldos</b><span>Procesamiento por gestión</span></div><div class="action-card"><i class="fa fa-file-excel-o"></i><b>Reportes CNS</b><span>Formato institucional de exportación</span></div></div></div></div></div><div class="col-md-6"><div class="x_panel"><div class="x_title"><h2>Integración con Control de Personal</h2><div class="clearfix"></div></div><div class="x_content"><div class="workflow"><span class="step done">Marcaciones</span><span class="arrow">→</span><span class="step done">Novedades</span><span class="arrow">→</span><span class="step done">Planilla</span><span class="arrow">→</span><span class="step">Boleta de pago</span></div><p class="mini-note" style="margin-top:15px">Descuentos y sanciones no se vuelven a transcribir en Planillas; se reciben desde Control de Personal.</p></div></div></div></div>
+      </section>
+
+      <!-- SERVIDOR -->
+      <section id="page-servidor" class="section-page">
+        <div class="page-title"><div class="title_left"><h3>Portal del Servidor Público <small>Autogestión de solicitudes y consultas personales</small></h3></div></div><div class="clearfix"></div>
+        <div class="portal-hero"><h3>Lucía Fernanda Quispe Mamani</h3><small>Psicóloga I · Ítem 152 · Centro de Acogida José Soria</small><div class="portal-status"><span>Estado: <b>ACTIVO</b></span><span>Ingreso: <b>03/02/2022</b></span><span>Vacaciones disponibles: <b>10 días</b></span></div></div>
+        <div class="row" style="margin-top:15px"><div class="col-md-8"><div class="x_panel"><div class="x_title"><h2>Acciones disponibles</h2><div class="clearfix"></div></div><div class="x_content"><div class="action-grid">
+          <div class="action-card" onclick="openAnnualUpdate()"><i class="fa fa-address-card-o"></i><b>Actualizar ficha</b><span>Confirmación anual de información</span></div>
+          <div class="action-card" onclick="openVacation()"><i class="fa fa-calendar"></i><b>Solicitar vacación</b><span>El sistema calcula días hábiles</span></div>
+          <div class="action-card" data-toggle="modal" data-target="#boletaModal"><i class="fa fa-map-marker"></i><b>Generar boleta</b><span>Salida, comisión o permiso</span></div>
+          <div class="action-card" onclick="registerMark()"><i class="fa fa-clock-o"></i><b>Registrar marcación</b><span>Hora y ubicación autorizada</span></div>
+        </div></div></div></div><div class="col-md-4"><div class="notice-card"><b>Actualización anual 2026</b><br>La información personal debe revisarse y confirmarse para la gestión.<br><br><button class="btn btn-xs btn-warning" onclick="openAnnualUpdate()">Revisar ahora</button></div></div></div>
+        <div class="row"><div class="col-md-6"><div class="x_panel"><div class="x_title"><h2>Marcaciones</h2><div class="clearfix"></div></div><div class="x_content"><table class="table table-condensed"><thead><tr><th>Fecha</th><th>Entrada</th><th>Salida</th><th>Observación</th></tr></thead><tbody id="portalMarks"></tbody></table></div></div></div><div class="col-md-6"><div class="x_panel"><div class="x_title"><h2>Estado de solicitudes</h2><div class="clearfix"></div></div><div class="x_content"><table class="table table-condensed"><thead><tr><th>Trámite</th><th>Fecha</th><th>Estado</th></tr></thead><tbody id="portalRequests"></tbody></table></div></div></div></div>
+        <div class="x_panel"><div class="x_title"><h2>Consulta de boleta de pago</h2><div class="clearfix"></div></div><div class="x_content"><div class="row"><div class="col-md-8"><div class="summary-strip"><div class="summary-card"><div class="k">Periodo</div><div class="v">Septiembre 2026</div></div><div class="summary-card"><div class="k">Haber</div><div class="v">Bs 6.850,00</div></div><div class="summary-card"><div class="k">Descuentos</div><div class="v">Bs 312,50</div></div><div class="summary-card"><div class="k">Líquido</div><div class="v">Bs 6.537,50</div></div></div></div><div class="col-md-4 text-right" style="padding-top:18px"><button class="btn btn-default" onclick="showPayslip(0)"><i class="fa fa-eye"></i> Ver detalle</button></div></div></div></div>
+      </section>
+
+      <!-- REPORTES -->
+      <section id="page-reportes" class="section-page">
+        <div class="page-title"><div class="title_left"><h3>Reportes y Auditoría <small>Información consolidada y trazabilidad institucional</small></h3></div></div><div class="clearfix"></div>
+        <div class="row"><div class="col-md-7"><div class="x_panel"><div class="x_title"><h2>Reportes disponibles</h2><div class="clearfix"></div></div><div class="x_content"><div class="action-grid" style="grid-template-columns:repeat(2,1fr)">
+          <a class="action-card" href="documentos_demo/reporte_general_demo.xlsx"><i class="fa fa-file-excel-o"></i><b>Reporte general</b><span>Personal, vacaciones, planillas y POAI</span></a>
+          <a class="action-card" href="documentos_demo/certificado_trabajo_demo.pdf"><i class="fa fa-file-pdf-o"></i><b>Certificado de trabajo</b><span>Ejemplo listo para impresión</span></a>
+          <a class="action-card" href="documentos_demo/memorandum_comision_demo.pdf"><i class="fa fa-file-pdf-o"></i><b>Memorándum comisión</b><span>Ejemplo generado</span></a>
+          <div class="action-card" onclick="exportPeopleCSV()"><i class="fa fa-download"></i><b>Exportación dinámica</b><span>Listado mostrado en formato CSV</span></div>
+        </div></div></div></div><div class="col-md-5"><div class="x_panel"><div class="x_title"><h2>Indicadores útiles</h2><div class="clearfix"></div></div><div class="x_content"><ul class="profile-list"><li>Personal por unidad, centro e instituto</li><li>Ítems ocupados y disponibles</li><li>Nivel de formación del personal</li><li>Vacaciones utilizadas y saldos</li><li>Comisiones por centro y periodo</li><li>Actualización anual de ficha</li><li>Novedades disciplinarias con efecto económico</li></ul></div></div></div></div>
+        <div class="x_panel"><div class="x_title"><h2>Auditoría de operaciones</h2><div class="clearfix"></div></div><div class="x_content"><table class="table audit-table"><thead><tr><th>Fecha y hora</th><th>Usuario</th><th>Módulo</th><th>Acción</th><th>Registro</th></tr></thead><tbody id="auditTable"></tbody></table></div></div>
+      </section>
+    </div>
+
+    <footer><div class="pull-right">Prototipo demostrativo - SEDEGES 2026</div><div class="clearfix"></div></footer>
+  </div>
+</div>
+
+<!-- MODAL ITEM POAI -->
+<div class="modal fade" id="itemModal" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Detalle del ítem y perfil POAI</h4></div><div class="modal-body" id="itemModalBody"></div><div class="modal-footer"><button class="btn btn-default" data-dismiss="modal">Cerrar</button></div></div></div></div>
+
+<!-- MODAL MEMO -->
+<div class="modal fade" id="memoModal" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Nuevo Memorándum</h4></div><div class="modal-body"><div class="row"><div class="col-md-4"><label>Tipo de memorándum</label><select id="memoType" class="form-control" onchange="updateMemoFields()"><option>Comisión</option><option>Designación</option><option>Cambio de ítem</option><option>Incorporación</option><option>Renuncia</option><option>Agradecimiento</option><option>Llamada de atención</option><option>Suspensión</option><option>Lactancia</option><option>Anulación de memorándum</option></select></div><div class="col-md-8"><label>Servidor</label><select id="memoPerson" class="form-control"></select></div></div><div id="memoDynamicFields" style="margin-top:15px"></div><hr><div class="rule-note">Los datos personales, C.I., cargo, ítem y dependencia se recuperan automáticamente. Solo se solicita información propia del tipo de memorándum.</div></div><div class="modal-footer"><button class="btn btn-default" data-dismiss="modal">Cancelar</button><button class="btn btn-brand" onclick="generateMemo()"><i class="fa fa-file-text"></i> Generar y registrar</button></div></div></div></div>
+
+<!-- MODAL DOCUMENT PREVIEW -->
+<div class="modal fade" id="docModal" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title" id="docTitle">Vista previa</h4></div><div class="modal-body"><div id="print-area"><div class="doc-preview" id="docPreview"></div></div></div><div class="modal-footer no-print"><button class="btn btn-default" data-dismiss="modal">Cerrar</button><button class="btn btn-brand" onclick="window.print()"><i class="fa fa-print"></i> Imprimir / Guardar PDF</button></div></div></div></div>
+
+<!-- MODAL BOLETA -->
+<div class="modal fade" id="boletaModal" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Nueva Boleta de Salida</h4></div><div class="modal-body"><div class="form-group"><label>Servidor</label><select id="boletaPerson" class="form-control"></select></div><div class="form-group"><label>Tipo</label><select id="boletaType" class="form-control"><option>Comisión de servicios</option><option>Salida oficial</option><option>Permiso</option></select></div><div class="form-group"><label>Destino</label><select id="boletaDestination" class="form-control"><option>Centro de Acogida José Soria</option><option>Centro de Acogida Félix Méndez Arcos</option><option>Instituto de Adaptación Infantil - IDAI</option><option>Instituto de Rehabilitación Infantil - IRI</option><option>Oficina Central</option></select></div><div class="form-group"><label>Motivo</label><input id="boletaReason" class="form-control" value="Coordinación técnica y seguimiento institucional"></div><div class="row"><div class="col-xs-6"><label>Hora salida</label><input id="boletaStart" class="form-control" type="time" value="10:00"></div><div class="col-xs-6"><label>Hora estimada retorno</label><input id="boletaEnd" class="form-control" type="time" value="13:00"></div></div><div class="checkbox"><label><input id="boletaGeo" type="checkbox" checked> Registrar ubicación únicamente al confirmar salida/llegada</label></div></div><div class="modal-footer"><button class="btn btn-default" data-dismiss="modal">Cancelar</button><button class="btn btn-brand" onclick="createBoleta()">Enviar al jefe inmediato</button></div></div></div></div>
+
+<!-- MODAL VACACION -->
+<div class="modal fade" id="vacationModal" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Solicitud de Vacación</h4></div><div class="modal-body"><div class="summary-strip" style="grid-template-columns:repeat(2,1fr)"><div class="summary-card"><div class="k">Saldo disponible</div><div class="v">10 días</div></div><div class="summary-card"><div class="k">Antigüedad</div><div class="v">4 años 7 meses</div></div></div><div class="row"><div class="col-xs-6"><label>Fecha de inicio</label><input id="vacStart" class="form-control" type="date" value="2026-10-05"></div><div class="col-xs-6"><label>Días solicitados</label><input id="vacDays" class="form-control" type="number" min="1" max="10" value="5" oninput="calcVacationReturn()"></div></div><div style="margin-top:12px"><label>Fecha estimada de retorno</label><input id="vacReturn" class="form-control" readonly></div><p class="mini-note" style="margin-top:8px">El cálculo demostrativo excluye sábados y domingos. En producción se incluirá el calendario institucional de feriados.</p></div><div class="modal-footer"><button class="btn btn-default" data-dismiss="modal">Cancelar</button><button class="btn btn-brand" onclick="submitVacation()">Enviar solicitud</button></div></div></div></div>
+
+<!-- MODAL ACTUALIZACION -->
+<div class="modal fade" id="annualModal" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Actualización anual de información - Gestión 2026</h4></div><div class="modal-body"><p class="mini-note">El servidor revisa únicamente la información que puede cambiar; no vuelve a llenar toda la ficha.</p><div class="row"><div class="col-md-6"><label>Teléfono / celular</label><input class="form-control" value="72541863"></div><div class="col-md-6"><label>Correo electrónico</label><input class="form-control" value="lucia.quipe.demo@email.bo"></div></div><br><div class="row"><div class="col-md-6"><label>Domicilio actual</label><input class="form-control" value="Zona Miraflores, La Paz"></div><div class="col-md-6"><label>Estado civil</label><select class="form-control"><option>Soltera</option><option>Casada</option><option>Divorciada</option><option>Viuda</option></select></div></div><hr><div class="poai-grid"><div class="profile-box"><h4>Hoja de Vida</h4><p class="mini-note">Formación, cursos, experiencia y referencias ya registradas.</p><button class="btn btn-default btn-sm" onclick="openToast('Edición de Hoja de Vida habilitada')">Revisar / actualizar</button></div><div class="profile-box"><h4>Familiares y parentesco</h4><p class="mini-note">3 familiares declarados. Se reutilizan en ficha y validaciones institucionales.</p><button class="btn btn-default btn-sm" onclick="openToast('Edición de familiares habilitada')">Revisar / actualizar</button></div></div></div><div class="modal-footer"><button class="btn btn-default" data-dismiss="modal">Cancelar</button><button class="btn btn-brand" onclick="confirmAnnualUpdate()">Confirmar información 2026</button></div></div></div></div>
+
+<!-- MODAL PERSONA -->
+<div class="modal fade" id="personFormModal" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title" id="personFormTitle">Nuevo servidor</h4></div><div class="modal-body">
+  <input type="hidden" id="pfId">
+  <div class="row"><div class="col-md-4"><label>C.I.</label><input id="pfCi" class="form-control"></div><div class="col-md-8"><label>Nombre completo</label><input id="pfName" class="form-control"></div></div><br>
+  <div class="row"><div class="col-md-3"><label>Ítem</label><input id="pfItem" type="number" class="form-control"></div><div class="col-md-5"><label>Cargo</label><input id="pfCargo" class="form-control"></div><div class="col-md-4"><label>Estado</label><select id="pfEstado" class="form-control"><option>ACTIVO</option><option>INACTIVO</option></select></div></div><br>
+  <div class="row"><div class="col-md-6"><label>Dependencia</label><input id="pfDep" class="form-control"></div><div class="col-md-6"><label>Asignación base</label><input id="pfCentro" class="form-control"></div></div><br>
+  <div class="row"><div class="col-md-4"><label>Fecha de ingreso</label><input id="pfIngreso" class="form-control" placeholder="dd/mm/aaaa"></div><div class="col-md-4"><label>Inamovilidad</label><select id="pfInamovilidad" class="form-control"><option value="NO">No</option><option value="SI">Sí</option></select></div><div class="col-md-4"><label>Detalle inamovilidad</label><input id="pfInamovilidadTipo" class="form-control" placeholder="Solo si corresponde"></div></div>
+  <p class="mini-note" style="margin-top:10px">Los datos académicos, familiares, seguridad social y demás información se administran dentro del expediente para evitar duplicación.</p>
+</div><div class="modal-footer"><button class="btn btn-default" data-dismiss="modal">Cancelar</button><button class="btn btn-brand" onclick="savePersonForm()"><i class="fa fa-save"></i> Guardar</button></div></div></div></div>
+
+
+<!-- MODAL USUARIO -->
+<div class="modal fade" id="userFormModal" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title" id="userFormTitle">Nuevo usuario</h4></div><div class="modal-body"><input type="hidden" id="ufId"><div class="row"><div class="col-sm-6"><label>Usuario</label><input id="ufUser" class="form-control"></div><div class="col-sm-6"><label>Área</label><select id="ufArea" class="form-control"><option>Kardex</option><option>Recursos Humanos</option><option>Control de Personal</option><option>Planillas</option><option>Administración</option></select></div></div><br><div class="row"><div class="col-sm-8"><label>Rol</label><input id="ufRole" class="form-control" placeholder="Ej. Responsable Kardex"></div><div class="col-sm-4"><label>Estado</label><select id="ufStatus" class="form-control"><option>HABILITADO</option><option>INHABILITADO</option></select></div></div><p class="mini-note" style="margin-top:10px">Los permisos específicos se asignan por rol; al inhabilitar un usuario no se borra su historial de auditoría.</p></div><div class="modal-footer"><button class="btn btn-default" data-dismiss="modal">Cancelar</button><button class="btn btn-brand" onclick="saveUserForm()"><i class="fa fa-save"></i> Guardar</button></div></div></div></div>
+
+<!-- MODAL ITEM -->
+<div class="modal fade" id="itemFormModal" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title" id="itemFormTitle">Nuevo ítem / puesto</h4></div><div class="modal-body"><input type="hidden" id="ifOriginal"><div class="row"><div class="col-sm-3"><label>Nº ítem</label><input id="ifNumber" type="number" class="form-control"></div><div class="col-sm-5"><label>Dependencia</label><input id="ifDep" class="form-control"></div><div class="col-sm-4"><label>Situación</label><select id="ifSituation" class="form-control"><option>Ocupado</option><option>Acéfalo</option></select></div></div><br><div class="row"><div class="col-sm-6"><label>Denominación</label><input id="ifDenom" class="form-control"></div><div class="col-sm-6"><label>Puesto funcional</label><input id="ifPuesto" class="form-control"></div></div><br><div class="row"><div class="col-sm-6"><label>Formación requerida</label><textarea id="ifFormacion" class="form-control" rows="2"></textarea></div><div class="col-sm-3"><label>Experiencia general</label><textarea id="ifExpGen" class="form-control" rows="2"></textarea></div><div class="col-sm-3"><label>Experiencia específica</label><textarea id="ifExpEsp" class="form-control" rows="2"></textarea></div></div><br><label>Funciones principales (una por línea)</label><textarea id="ifFunciones" class="form-control" rows="4"></textarea></div><div class="modal-footer"><button class="btn btn-default" data-dismiss="modal">Cancelar</button><button class="btn btn-brand" onclick="saveItemForm()"><i class="fa fa-save"></i> Guardar</button></div></div></div></div>
+
+<!-- MODAL NOTIFICACIONES -->
+<div class="modal fade" id="notificationsModal" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Bandeja de pendientes y notificaciones</h4></div><div class="modal-body" id="notificationsBody"></div><div class="modal-footer"><button class="btn btn-default" data-dismiss="modal">Cerrar</button></div></div></div></div>
+
+<!-- MODAL GUIA PRESENTACION -->
+<div class="modal fade" id="presentationGuideModal" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Recorrido sugerido para demostrar el sistema</h4></div><div class="modal-body"><div class="demo-steps"><div><span>1</span><b>Nómina</b><small>Buscar un servidor y abrir la ficha resumen.</small></div><div><span>2</span><b>Expediente</b><small>Mostrar ítem, asignación, inamovilidad, POAI y datos reutilizados.</small></div><div><span>3</span><b>Memorándum</b><small>Crear una comisión y comprobar que aparece en su historial.</small></div><div><span>4</span><b>Control</b><small>Crear una boleta y avanzar por las autorizaciones.</small></div><div><span>5</span><b>Planillas</b><small>Mostrar novedades integradas y boleta de pago.</small></div><div><span>6</span><b>Auditoría</b><small>Ver quién realizó cada operación.</small></div></div></div><div class="modal-footer"><button class="btn btn-brand" onclick="$('#presentationGuideModal').modal('hide'); showPage('nomina')">Iniciar recorrido</button></div></div></div></div>
+
+<div id="toast" style="display:none;position:fixed;right:25px;bottom:25px;z-index:99999;background:#243447;color:#fff;padding:12px 16px;border-radius:6px;box-shadow:0 4px 15px rgba(0,0,0,.2);font-size:12px"></div>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/Chart.min.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/enhancements.js"></script>
+</body>
+</html>
